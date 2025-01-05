@@ -256,7 +256,7 @@ def generate_wrapper(model_name, prompts, temperature, top_p, max_tokens, stop=N
         # embed prompt with llama2 chat format
         # prompts = [convert_llama2_prompt_format('You are a helpful assistant.', prompt) for prompt in prompts]
         prompts = [convert_llama2_multiturn_human_assistant_prompt(prompt) for prompt in prompts]
-        bsz = 8
+        bsz = 1
         if temperature == 0:
             out = mw.predict(prompts, bsz=bsz, eos_token_id=None, do_sample=False, num_beams=1, max_new_tokens=max_tokens)
         else:
